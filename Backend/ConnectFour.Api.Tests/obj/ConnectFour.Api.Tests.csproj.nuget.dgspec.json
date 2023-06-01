@@ -1,0 +1,532 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api.Tests\\ConnectFour.Api.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api.Tests\\ConnectFour.Api.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api.Tests\\ConnectFour.Api.Tests.csproj",
+        "projectName": "ConnectFour.Api.Tests",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api.Tests\\ConnectFour.Api.Tests.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\ConnectFour.Api.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\ConnectFour.Api.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\ConnectFour.Domain.Tests.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\ConnectFour.Domain.Tests.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Guts.Client.Core": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\ConnectFour.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\ConnectFour.Api.csproj",
+        "projectName": "ConnectFour.Api",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\ConnectFour.Api.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\ConnectFour.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\ConnectFour.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj",
+        "projectName": "ConnectFour.AppLogic",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj",
+        "projectName": "ConnectFour.Common",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\ConnectFour.Domain.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\ConnectFour.Domain.Tests.csproj",
+        "projectName": "ConnectFour.Domain.Tests",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\ConnectFour.Domain.Tests.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Guts.Client.Core": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj",
+        "projectName": "ConnectFour.Domain",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\ConnectFour.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\ConnectFour.Infrastructure.csproj",
+        "projectName": "ConnectFour.Infrastructure",
+        "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\ConnectFour.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\dries\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dries\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.AppLogic\\ConnectFour.AppLogic.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Common\\ConnectFour.Common.csproj"
+              },
+              "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj": {
+                "projectPath": "C:\\Users\\dries\\Desktop\\SCHOOL\\1TIN\\PROJECT\\GITHUB\\connect4-connect21\\Backend\\ConnectFour.Domain\\ConnectFour.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConnectFour.AppLogic</name>
+    </assembly>
+    <members>
+        <member name="T:ConnectFour.AppLogic.BasicGameCandidateMatcher">
+            <inheritdoc cref="T:ConnectFour.AppLogic.Contracts.IGameCandidateMatcher"/>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.IGameCandidateMatcher">
+            <summary>
+            Matches <see cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate">game candidates</see> with each other.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateMatcher.SelectOpponentToChallenge(System.Collections.Generic.IList{ConnectFour.Domain.GameDomain.Contracts.IGameCandidate})">
+            <summary>
+            Selects an opponent to challenge from a <paramref name="possibleOpponents">list of candidates</paramref>
+            </summary>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.IGameCandidateRepository">
+            <summary>
+            Stores and retrieves game candidate instances in a storage medium (e.g. in server RAM memory)
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateRepository.AddOrReplace(ConnectFour.Domain.GameDomain.Contracts.IGameCandidate)">
+            <summary>
+            Adds a candidate to storage.
+            If the candidate already exists in storage (same UserId), it is replaced in storage.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateRepository.RemoveCandidate(System.Guid)">
+            <summary>
+            Removes a candidate from storage.
+            </summary>
+            <param name="userId">The user identifier of the candidate.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateRepository.GetCandidate(System.Guid)">
+            <summary>
+            Retrieve a candidate from storage.
+            </summary>
+            <param name="userId">The user identifier of the candidate</param>
+            <exception cref="T:ConnectFour.Common.DataNotFoundException">Thrown if the candidate does not exist in storage.</exception>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateRepository.FindCandidatesThatCanBeChallengedBy(System.Guid)">
+            <summary>
+            Finds all the other candidates in storage that can be challenged by a candidate.
+            </summary>
+            <param name="userId">The user identifier of the candidate that wants to find others to challenge.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameCandidateRepository.FindChallengesFor(System.Guid)">
+            <summary>
+            Finds the candidates that have challenged a user.
+            </summary>
+            <param name="challengedUserId">The identifier of the user that has possibly received challenges.</param>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            </remarks>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.IGameRepository">
+            <summary>
+            Stores and retrieves game instances in a storage medium (e.g. in server RAM memory)
+            </summary>
+            <remarks>
+            Implemented by the InMemoryGameRepository class in the ConnectFour.Infrastructure layer
+            </remarks>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameRepository.Add(ConnectFour.Domain.GameDomain.Contracts.IGame)">
+            <summary>
+            Adds a game
+            </summary>
+            <param name="newGame">The game to be stored</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameRepository.GetById(System.Guid)">
+            <summary>
+            Retrieves a game from storage
+            </summary>
+            <param name="id">The unique identifier of the game</param>
+            <returns>The matching game if it exists</returns>
+            <exception cref="T:ConnectFour.Common.DataNotFoundException">Thrown when no matching game can be found</exception>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.IGameService">
+            <summary>
+            Service to manipulate all the games in the application
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameService.CreateGameForUsers(ConnectFour.Domain.User,ConnectFour.Domain.User,ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Creates and stores a new game for 2 players (users)
+            </summary>
+            <param name="user1">The user that will be player 1</param>
+            <param name="user2">The user that will be player 2</param>
+            <param name="settings">The settings that should be used when creating the game</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameService.GetById(System.Guid)">
+            <summary>
+            Retrieves a game from storage
+            </summary>
+            <param name="gameId">The unique identifier of the game</param>
+            <returns>The matching game if it exists</returns>
+            <exception cref="T:ConnectFour.Common.DataNotFoundException">Thrown when no matching game can be found</exception>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameService.ExecuteMove(System.Guid,System.Guid,ConnectFour.Domain.GameDomain.Contracts.IMove)">
+            <summary>
+            Retrieves a game from storage and executes a move on it
+            </summary>
+            <param name="gameId">The unique identifier of the game</param>
+            <param name="playerId">The unique identifier of the player that makes the move</param>
+            <param name="move">The move that should be made</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IGameService.CreateSinglePlayerGameForUser(ConnectFour.Domain.User,ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Creates and stores a new game for 1 player (user) against a computer player (AI)
+            </summary>
+            <param name="user">The user that will be player 1</param>
+            <param name="settings">The settings that should be used when creating the game</param>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.ILeaderboardRepository">
+            <summary>
+            Loads, stores, and updates the leaderboard in server memory
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardRepository.GetLeaderboard">
+            <summary>
+            Gets the leaderboard
+            </summary>
+            <returns>All leaderboard entries</returns>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardRepository.UpdateLeaderboardEntries(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Updates the leaderboard with the given winner and loser
+            </summary>
+            <param name="winnerUserId"><see cref="T:System.Guid"/> of the user who has won the game</param>
+            <param name="loserUserId"><see cref="T:System.Guid"/> of the user who has lost the game</param>
+            <param name="gameId"><see cref="T:System.Guid"/> of the game to update the entries for</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardRepository.GetLeaderboardEntryByUserId(System.Guid)">
+            <summary>
+            Gets the leaderboard entry for the given user
+            </summary>
+            <param name="userId"><see cref="T:System.Guid"/> of the user to search</param>
+            <returns><see cref="T:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry"/> that was found, otherwise returns null.</returns>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardRepository.AddUserLeaderboardEntry(ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry)">
+            <summary>
+            Adds the given entry to the leaderboard
+            </summary>
+            <param name="entry"><see cref="T:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry"/> to add to the leaderboard</param>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.ILeaderboardService">
+            <summary>
+            Service to manipulate the leaderboard
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardService.GetLeaderboard">
+            <summary>
+            Gets the leaderboard, ordered by wins descending
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.ILeaderboardService.EvaluateGameAsync(System.Guid)">
+            <summary>
+            Checks the game and updates the leaderboard accordingly
+            </summary>
+            <param name="gameId"><see cref="T:System.Guid"/> of the game to check</param>
+        </member>
+        <member name="T:ConnectFour.AppLogic.Contracts.IWaitingPool">
+            <summary>
+            Manage the game candidates that want to play a game.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.Join(ConnectFour.Domain.User,ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Adds a user as a game candidate to the pool.
+            </summary>
+            <param name="user">The user that wants to play a game.</param>
+            <param name="gameSettings">The game settings that the user desires.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.Leave(System.Guid)">
+            <summary>
+            Removes tha candidacy of a user from the pool. 
+            </summary>
+            <param name="userId">The identifier of the user to remove.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.GetCandidate(System.Guid)">
+            <summary>
+            Retrieves the candidacy of a user.
+            </summary>
+            <param name="userId">The identifier of the user.</param>
+            <exception cref="T:ConnectFour.Common.DataNotFoundException">Thrown when the user is not in the pool.</exception>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.Challenge(System.Guid,System.Guid)">
+            <summary>
+            Challenges a user to a game.
+            </summary>
+            <param name="challengerUserId">The identifier of the user that challenges.</param>
+            <param name="targetUserId">The identifier of the user that is being challenged.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.FindCandidatesThatCanBeChallengedBy(System.Guid)">
+            <summary>
+            Searches for other candidates in the pool that have requested the same game settings and thus are candidates that can be challenged.
+            </summary>
+            <param name="userId">The identifier of the user that wants to find candidates to challenge.</param>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.WithdrawChallenge(System.Guid)">
+            <summary>
+            Undo a <see cref="M:ConnectFour.AppLogic.Contracts.IWaitingPool.Challenge(System.Guid,System.Guid)"/>.
+            </summary>
+            <param name="userId">The identifier of the user that made a challenge.</param>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            </remarks>
+        </member>
+        <member name="M:ConnectFour.AppLogic.Contracts.IWaitingPool.FindChallengesFor(System.Guid)">
+            <summary>
+            Searches for candidates that have challenged a <paramref name="challengedUserId">user</paramref>.
+            </summary>
+            <param name="challengedUserId">The identifier of the user that possibly has been challenged by one or more candidates.</param>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            </remarks>
+        </member>
+        <member name="T:ConnectFour.AppLogic.GameService">
+            <inheritdoc cref="T:ConnectFour.AppLogic.Contracts.IGameService"/>
+        </member>
+        <member name="T:ConnectFour.AppLogic.LeaderboardService">
+            <inheritdoc cref="T:ConnectFour.AppLogic.Contracts.ILeaderboardService" />
+        </member>
+        <member name="T:ConnectFour.AppLogic.WaitingPool">
+            <inheritdoc cref="T:ConnectFour.AppLogic.Contracts.IWaitingPool"/>
+        </member>
+    </members>
+</doc>

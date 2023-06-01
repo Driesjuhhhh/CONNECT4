@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConnectFour.Api</name>
+    </assembly>
+    <members>
+        <member name="P:ConnectFour.Api.Controllers.ApiControllerBase.UserId">
+            <summary>
+            Returns the id (Guid) of the authenticated user / player.
+            If no user is authenticated an empty guid is returned.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.AuthenticationController.Register(ConnectFour.Api.Models.RegisterModel)">
+            <summary>
+            Registers a new user in the database.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.AuthenticationController.CreateToken(ConnectFour.Api.Models.LoginModel)">
+            <summary>
+            Returns an object containing a (bearer) token that will be valid for 60 minutes.
+            The token should be added in the Authorization header of each http request for which the user must be authenticated.
+            The Id and NickName of the player are also included in the object.
+            </summary>
+            <example>Authorization bearer [token]</example>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.GamesController.GetGame(System.Guid)">
+            <summary>
+            Gets information about a game
+            </summary>
+            <param name="id">Id (guid) of the game</param>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.GamesController.GetPossibleMovesForGame(System.Guid)">
+            <summary>
+            Gets the possible moves of the logged in user for a certain game
+            </summary>
+            <param name="id">Id (guid) of the game</param>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.GamesController.ExecuteMove(System.Guid,ConnectFour.Api.Models.MoveInputModel)">
+            <summary>
+            Executes a move on the grid of the game.
+            </summary>
+            <param name="id">Id (guid) of the game</param>
+            <param name="inputModel">Specification of the move (color, move type)</param>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.GamesController.CreateSinglePlayerGame(ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Creates a single player game for the logged in user against a computer player (AI).
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.LeaderboardController.GetLeaderboard">
+            <summary>
+            Handles getting the leaderboard
+            </summary>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry"/></returns>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.LeaderboardController.EvaluateGame(System.Guid)">
+            <summary>
+            Takes a game and checks to see who has won, updates the leaderboard entries accordingly
+            </summary>
+            <param name="gameId"><see cref="T:System.Guid"/> of the game to check</param>
+        </member>
+        <member name="T:ConnectFour.Api.Controllers.WaitingPoolController">
+            <summary>
+            Provides functionality for users that want to find an opponent to play against.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.Join(ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Join the waiting pool to find an opponent.
+            if the AutoMatchCandidates of the <paramref name="gameSettings"/> is true,
+            you will be automatically matched with an opponent (as soon as one is available in the waiting pool)
+            </summary>
+            <param name="gameSettings">
+            Contains info about the type of game you want to play. You can only match with others that join with the same settings.
+            </param>
+            <remarks>Candidates are automatically removed from the waiting pool after 10 minutes.</remarks>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.Leave">
+            <summary>
+            Leave the waiting pool of game candidates.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.GetOwnCandidate">
+            <summary>
+            Gets information about your candidacy in the waiting pool.
+            Call this endpoint periodically (e.g. by using polling) to check if a game has been created for you (by inspecting the GameId of the returned info).
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.GetCandidatesChallengingMe">
+            <summary>
+            Get a list of candidates in the waiting pool that have challenged you.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.Challenge(ConnectFour.Api.Models.ChallengeModel)">
+            <summary>
+            Challenge another candidate in the waiting pool.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.WithDrawChallenge">
+            <summary>
+            Withdraw your challenge so that you can challenge another candidate.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Api.Controllers.WaitingPoolController.GetCandidatesThatCanBeChallenged">
+            <summary>
+            Get a list of candidates in the waiting pool that can be challenged.
+            Only candidates that with matching game settings and that are not in a game, can be challenged.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="F:ConnectFour.Api.Hubs.WaitingPoolChatHub._users">
+            <summary>
+            Key is the connection id. Value is the user.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Api.Models.CandidateModel.User">
+            <summary>
+            Information about the user in the waiting pool.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Api.Models.CandidateModel.GameSettings">
+            <summary>
+            The game settings the user has chosen.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Api.Models.CandidateModel.GameId">
+            <summary>
+            The id of the game that was created for the candidate.
+            When this is not an empty guid, you know a game has been created for this candidate.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Api.Models.CandidateModel.ProposedOpponentUserId">
+            <summary>
+            Id of a candidate that was challenged by this candidate.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Api.Models.ChallengeModel.TargetUserId">
+            <summary>
+            Id of the user that should be challenged
+            </summary>
+        </member>
+    </members>
+</doc>

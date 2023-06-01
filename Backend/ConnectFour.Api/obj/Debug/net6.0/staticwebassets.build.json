@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VDDi5mZRlDVQ0DbSe6ted9klg1tg6Vcpwx9nUadglto=",
+  "Source": "ConnectFour.Api",
+  "BasePath": "_content/ConnectFour.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

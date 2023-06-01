@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConnectFour.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.IGame">
+            <summary>
+            A game between 2 players.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Id">
+            <summary>
+            Unique identifier of the game.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player1">
+            <summary>
+            Player 1, the red player.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player2">
+            <summary>
+            Player 2, the yellow player.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.PlayerToPlayId">
+            <summary>
+            The unique identifier of the player who's turn it is
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Grid">
+            <summary>
+            The grid that holds the played discs.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Finished">
+            <summary>
+            True if the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Grid"/> contains a winning connection or if the player to play cannot execute any move.
+            False otherwise.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGame.PopOutAllowed">
+            <summary>
+            Indicates if it is allowed to pop-out discs from the bottom of the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGame.GetPossibleMovesFor(System.Guid)">
+            <summary>
+            Returns all the moves a player can execute.
+            If it's not the player's turn, no moves will be returned.
+            </summary>
+            <param name="playerId">The unique identifier of the player that wants to know its possible moves.</param>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGame.ExecuteMove(System.Guid,ConnectFour.Domain.GameDomain.Contracts.IMove)">
+            <summary>
+            Executes a move on the grid, gives the turn to the opponent and removes the played disc from the disc collection of the player.
+            </summary>
+            <param name="playerId">The unique identifier of the player.</param>
+            <param name="move">The move that needs to be executed.</param>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGame.GetPlayerById(System.Guid)">
+            <summary>
+            Returns <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player1"/> or <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player2"/> depending on the provided <paramref name="playerId"/>.
+            </summary>
+            <param name="playerId">The unique identifier of the player.</param>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGame.GetOpponent(System.Guid)">
+            <summary>
+            Returns <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player1"/> or <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGame.Player2"/>, the player that is not identified with <paramref name="playerId"/>.
+            </summary>
+            <param name="playerId">The unique identifier of the player.</param>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate">
+            <summary>
+            User that wants to create or join a game against another (human) user.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.GameSettings">
+            <summary>
+            The game settings the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.User"/> desires.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.GameId">
+            <summary>
+            The game that was found / created for the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.User"/> and the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.ProposedOpponentUserId">opponent</see>.
+            When no game is found or created yet, an empty Guid is returned.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.ProposedOpponentUserId">
+            <summary>
+            UserId of the opponent that has been challenged by the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.User"/>.
+            If nobody is challenged (yet), an empty Guid is returned.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.CanChallenge(ConnectFour.Domain.GameDomain.Contracts.IGameCandidate)">
+            <summary>
+            Indicates if another candidate can be challenged.
+            The <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.GameSettings"/> must match and a <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.GameId">game</see> is not found yet.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.Challenge(ConnectFour.Domain.GameDomain.Contracts.IGameCandidate)">
+            <summary>
+            Actually challenge another candidate.
+            This will set the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.ProposedOpponentUserId"/>.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.AcceptChallenge(ConnectFour.Domain.GameDomain.Contracts.IGameCandidate)">
+            <summary>
+            Accept a challenge from another candidate.
+            This will set the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.ProposedOpponentUserId"/>.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.WithdrawChallenge">
+            <summary>
+            Clears the <see cref="P:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate.ProposedOpponentUserId"/>.
+            </summary>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            </remarks>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidateFactory">
+            <summary>
+            Can create a <see cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate"/>
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameCandidateFactory.CreateNewForUser(ConnectFour.Domain.User,ConnectFour.Domain.GameDomain.GameSettings)">
+            <summary>
+            Creates a new <see cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate"/> from a <paramref name="user"/> and <paramref name="settings"/>.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.IGameFactory">
+            <summary>
+            Can create an <see cref="T:ConnectFour.Domain.GameDomain.Contracts.IGame"/>.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameFactory.CreateNewTwoPlayerGame(ConnectFour.Domain.GameDomain.GameSettings,ConnectFour.Domain.User,ConnectFour.Domain.User)">
+            <summary>
+            Creates a 2 player game. Human against human.
+            </summary>
+            <param name="settings">The settings for the game.</param>
+            <param name="user1">The user that will be player 1 (the red player).</param>
+            <param name="user2">The user that will be player 2 (the yellow player).</param>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.IGameFactory.CreateNewSinglePlayerGame(ConnectFour.Domain.GameDomain.GameSettings,ConnectFour.Domain.User)">
+            <summary>
+            Creates a single player game against a computer player (AI).
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry">
+            <summary>
+            An entry in the leaderboard
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.UserId">
+            <summary>
+            The Id of an User, used for identification purposes
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.Username">
+            <summary>
+            The username of an User, used for display purposes
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.Wins">
+            <summary>
+            Amount of times the user has won a game
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.Losses">
+            <summary>
+            Amount of times the user has lost a game
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.IncrementWins">
+            <summary>
+            Increment the amount of wins by 1
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry.IncrementLosses">
+            <summary>
+            Increment the amount of losses by 1
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Contracts.IMove">
+            <summary>
+            Represents a move that can be made in a game.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IMove.Type">
+            <summary>
+            The type of the move.
+            </summary>
+            <remarks>
+            For the minimal requirements the type will always be 'SlideIn'.
+            </remarks>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IMove.DiscType">
+            <summary>
+            The type of disc that is used.
+            </summary>
+            <remarks>
+            For the minimal requirements the disc type will always be 'Normal'.
+            </remarks>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.Contracts.IMove.Column">
+            <summary>
+            Index of the column the disc is inserted in.
+            The most left column has index 0.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Game">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.IGame"/>
+        </member>
+        <member name="M:ConnectFour.Domain.GameDomain.Game.#ctor(ConnectFour.Domain.GameDomain.Contracts.IGame)">
+            <summary>
+            Creates a game that is a copy of an other game.
+            </summary>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            To make the mini-max algorithm for an AI game play strategy work, this constructor should be implemented.
+            </remarks>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.GameCandidate">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidate"/>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.GameCandidateFactory">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameCandidateFactory"/>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.GameFactory">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.IGameFactory"/>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.GameSettings.AutoMatchCandidates">
+            <summary>
+            If true, you will be automatically matched with another candidate in the waiting pool.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.GameSettings.EnablePopOut">
+            <summary>
+            If true, it is also possible to pop a disc out of the bottom of the grid (EXTRA).
+            The default value is false.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.GameSettings.ConnectionSize">
+            <summary>
+            Number of discs that need to be connected to win.
+            The default value is four.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.GameSettings.GridRows">
+            <summary>
+            Number of rows in the grid.
+            The default value is 6.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GameDomain.GameSettings.GridColumns">
+            <summary>
+            Number of columns in the grid.
+            The default value is 7.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.LeaderboardEntry">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.ILeaderboardEntry" />
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.Move">
+            <inheritdoc cref="T:ConnectFour.Domain.GameDomain.Contracts.IMove"/>
+        </member>
+        <member name="T:ConnectFour.Domain.GameDomain.MoveType">
+            <summary>
+            Type of moves that can be made in a connect4 game.
+            </summary>
+        </member>
+        <member name="F:ConnectFour.Domain.GameDomain.MoveType.SlideIn">
+            <summary>
+            Slide a disc in the top of a grid column.
+            </summary>
+        </member>
+        <member name="F:ConnectFour.Domain.GameDomain.MoveType.PopOut">
+            <summary>
+            Pop a disc, at the bottom of a grid column, out of the grid.
+            This will cause the discs above to drop one row lower.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Connection">
+            <inheritdoc cref="T:ConnectFour.Domain.GridDomain.Contracts.IConnection"/>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Contracts.IConnection">
+            <summary>
+            A group of aligned (horizontal, vertical or diagonal) discs of the same color.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IConnection.From">
+            <summary>
+            Cell coordinate in the grid where the connection starts.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IConnection.To">
+            <summary>
+            Cell coordinate in the grid where the connection ends.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IConnection.Size">
+            <summary>
+            The size of the connection.
+            Typically this is 4. 
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IConnection.Color">
+            <summary>
+            The color of the discs in the connection.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Contracts.IDisc">
+            <summary>
+            Disc that can be slide in to an <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IGrid"/>.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IDisc.Type">
+            <summary>
+            Type of the disc.
+            Typically 'Normal' (1).
+            Can also have another value when EXTRA'S are implemented.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IDisc.Color">
+            <summary>
+            Color of the disc.
+            Red (1) or Yellow (2)
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Contracts.IGrid">
+            <summary>
+            Grid that holds the player discs during a game.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.NumberOfRows">
+            <summary>
+            Number of rows in the grid.
+            Typically 6.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.NumberOfColumns">
+            <summary>
+            Number of columns in the grid.
+            Typically 7.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.WinningConnectSize">
+            <summary>
+            Number of discs of the same color that need to be aligned to form a winning connection.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.Cells">
+            <summary>
+            The cells of the grid. This is a <see cref="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.NumberOfRows"/> x <see cref="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.NumberOfColumns"/> matrix.
+            If null, then the cell is empty.
+            Otherwise the cell is occupied with a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/>.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.Contracts.IGrid.WinningConnections">
+            <summary>
+            Holds the winning connections in the grid.
+            In a normal game this list holds zero or one winning connection.
+            But in a special games (e.g. when pop-out is enabled) it is possible that there are multiple winning connections.
+            This list may change each time <see cref="M:ConnectFour.Domain.GridDomain.Contracts.IGrid.SlideInDisc(ConnectFour.Domain.GridDomain.Contracts.IDisc,System.Int32)"/> or <see cref="M:ConnectFour.Domain.GridDomain.Contracts.IGrid.PopOutDisc(ConnectFour.Domain.GridDomain.Contracts.IDisc,System.Int32)"/> is called.
+            </summary>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Contracts.IGrid.SlideInDisc(ConnectFour.Domain.GridDomain.Contracts.IDisc,System.Int32)">
+            <summary>
+            Slides a disc in one of the columns of the grid (from the top).
+            The disc 'falls down' until it is in a cell above a cell occupied with a disc or until it is at the bottom cell.
+            </summary>
+            <param name="disc">The disc being slide in.</param>
+            <param name="column">The index of column of the grid</param>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Contracts.IGrid.PopOutDisc(ConnectFour.Domain.GridDomain.Contracts.IDisc,System.Int32)">
+            <summary>
+            Removes a disc from a column of the grid (the one at the bottom row). All discs above it 'fall' one cell down.
+            </summary>
+            <param name="disc">The disc being popped out.</param>
+            <param name="column">The index of column of the grid.</param>
+            <remarks>This is an EXTRA</remarks>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Contracts.IGridEvaluator">
+            <summary>
+            Can give a score on a grid. The score indicates who is winning.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Contracts.IGridEvaluator.CalculateScore(ConnectFour.Domain.GridDomain.Contracts.IGrid,ConnectFour.Domain.GridDomain.DiscColor)">
+            <summary>
+            Calculates a score for a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IGrid"/>.
+            The score indicates how likely is is that the <paramref name="maximizingColor"/> is going to win.
+            If the <paramref name="maximizingColor"/> is winning the score will be positive.
+            If the <paramref name="maximizingColor"/> is losing the score will be negative.
+            </summary>
+            <param name="grid">The grid (possibly) containing discs.</param>
+            <param name="maximizingColor">
+            The color (red or yellow) of the player that tries to get a score as high as possible.
+            The minimizing player (the other player) is winning when the score is negative.
+            </param>
+            <returns>
+            0 if nobody has the upper hand.
+            A positive score if the maximizing player has the upper hand. The higher the score, the more likely the maximizing player is going to win.
+            A negative score if the minimizing player has the upper hand. The lower the score, the more likely the minimizing player is going to win.
+            int.MinValue when the minimizing player has a connect4 (and the maximizing player does not).
+            int.MaxValue when the maximizing player has a connect4 (and the minimizing player does not).
+            </returns>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Disc">
+            <inheritdoc cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.Grid">
+            <inheritdoc cref="T:ConnectFour.Domain.GridDomain.Contracts.IGrid"/>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.#ctor(ConnectFour.Domain.GridDomain.Contracts.IGrid)">
+            <summary>
+            Creates a grid that is a copy of an other grid.
+            </summary>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            To make the mini-max algorithm for an AI game play strategy work, this constructor should be implemented.
+            </remarks>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.CheckWin(System.Int32,System.Int32,ConnectFour.Domain.GridDomain.Contracts.IDisc)">
+            <summary>
+            Checks the Grid to see if there is a winning connection anywhere on the board.
+            This method is called after every move.
+            </summary>
+            <param name="row">Row at which the <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/> was inserted.</param>
+            <param name="col">Column at which the <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/> was inserted.</param>
+            <param name="disc">Inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.CheckDiagonalTopLeftToBottomRightConnection(System.Int32,System.Int32,ConnectFour.Domain.GridDomain.Contracts.IDisc)">
+            <summary>
+            Checks the Grid for a diagonal connection from top left to bottom right.
+            </summary>
+            <param name="row">Row of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <param name="col">Column of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <param name="disc">Inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <returns>Returns a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IConnection"/> if one was present, otherwise returns null.</returns>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.CheckDiagonalBottomLeftToTopRightConnection(System.Int32,System.Int32,ConnectFour.Domain.GridDomain.Contracts.IDisc)">
+            <summary>
+            Checks the Grid for a diagonal connection from bottom left to top right.
+            </summary>
+            <param name="row">Row of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <param name="col">Column of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <param name="disc">Inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <returns>Returns a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IConnection"/> if one was present, otherwise returns null.</returns>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.CheckHorizontalConnection(System.Int32,ConnectFour.Domain.GridDomain.Contracts.IDisc)">
+            <summary>
+            Checks the Grid for a horizontal connection.
+            </summary>
+            <param name="row">
+            Row of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/>,
+            this row will be checked to see if there's a winning connection
+            </param>
+            <param name="disc">Newly inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <returns>Returns a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IConnection"/> if one was present, otherwise returns null.</returns>
+        </member>
+        <member name="M:ConnectFour.Domain.GridDomain.Grid.CheckVerticalConnection(System.Int32,ConnectFour.Domain.GridDomain.Contracts.IDisc)">
+            <summary>
+            Checks the Grid for a vertical connection.
+            </summary>
+            <param name="col">
+            Column of the inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/>,
+            this column will be checked to see if there's a winning connection
+            </param>
+            <param name="disc">Newly inserted <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IDisc"/></param>
+            <returns>Returns a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IConnection"/> if one was present, otherwise returns null.</returns>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.GridCoordinate">
+            <summary>
+            Represents a position in a <see cref="T:ConnectFour.Domain.GridDomain.Contracts.IGrid"/>.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.GridCoordinate.Row">
+            <summary>
+            The index of the row in the grid.
+            The top row has index 0. The second row from the top has index 1, ...
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.GridCoordinate.Column">
+            <summary>
+            The index of the column in the grid.
+            The most left column has index 0. The second column from the left has index 1, ...
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.GridDomain.GridCoordinate.Empty">
+            <summary>
+            Represents a <see cref="T:ConnectFour.Domain.GridDomain.GridCoordinate"/> that is not on the grid.
+            </summary>
+        </member>
+        <member name="T:ConnectFour.Domain.GridDomain.GridEvaluator">
+            <inheritdoc cref="T:ConnectFour.Domain.GridDomain.Contracts.IGridEvaluator"/>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.ComputerPlayer">
+            <inheritdoc cref="T:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer"/>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.ComputerPlayer.DetermineBestMove(ConnectFour.Domain.GameDomain.Contracts.IGame)">
+            <summary>
+            Uses gameplay strategy to determine the best move to execute.
+            </summary>
+            <param name="game">The game (in its current state)</param>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.Contracts.IGamePlayStrategy">
+            <summary>
+            A strategy for an AI player. The strategy can be used to determine a move for the AI player in a game.
+            </summary>
+            <remarks>This is an EXTRA. Not needed to implement the minimal requirements.</remarks>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.Contracts.IGamePlayStrategy.GetBestMoveFor(System.Guid,ConnectFour.Domain.GameDomain.Contracts.IGame)">
+            <summary>
+            Gets the best move to play for a player.
+            </summary>
+            <param name="playerId">Identifier of the (AI) player that wants to make a move.</param>
+            <param name="game">The game the (AI) player is in.</param>
+            <returns>
+            The best move according to the strategy.
+            </returns>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer">
+            <summary>
+            A player in a <see cref="T:ConnectFour.Domain.GameDomain.Contracts.IGame"/>
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.Id">
+            <summary>
+            Unique identifier of the player
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.Name">
+            <summary>
+            (Display) name of the player
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.Color">
+            <summary>
+            Color of the player.
+            Red (1) or Yellow (2)
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.NumberOfNormalDiscs">
+            <summary>
+            The number of normal discs the player holds currently.
+            If the player does not have any discs left, it cannot execute a move anymore.
+            </summary>
+        </member>
+        <member name="P:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.SpecialDiscs">
+            <summary>
+            The special discs the player holds currently.
+            If the player does not have any discs left (normal or special), it cannot execute a move anymore.
+            </summary>
+            <remarks>Only needed when implementing EXTRA'S</remarks>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.HasDisk(ConnectFour.Domain.GridDomain.DiscType)">
+            <summary>
+            Checks if the player has a disk of a certain type.
+            If the player does not have a disk of a type, it cannot execute moves anymore with discs of that type.
+            </summary>
+            <param name="discType">The type of the disk.</param>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.AddDisc(ConnectFour.Domain.GridDomain.DiscType)">
+            <summary>
+            Returns a previously played disc to the player.
+            This can happen when the Pop-Out extra is implemented, and discs can be taken back from the grid.
+            </summary>
+            <param name="discType">The type of the disk</param>
+            <remarks>Only needed when implementing EXTRA'S</remarks>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer.RemoveDisc(ConnectFour.Domain.GridDomain.DiscType)">
+            <summary>
+            Removes a disk from the player.
+            When a disc is slide in the grid, it should be removed from the discs the player holds.
+            </summary>
+            <param name="discType">The type of the disk</param>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.HumanPlayer">
+            <inheritdoc cref="T:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer"/>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.MiniMaxGamePlayStrategy">
+            <summary>
+            <see cref="T:ConnectFour.Domain.PlayerDomain.Contracts.IGamePlayStrategy"/> that uses the mini-max algorithm (https://en.wikipedia.org/wiki/Minimax).
+            </summary>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            Also when implementing the (AI) extra, it is not needed to alter code in this class.
+            It should work as is.
+            </remarks>
+        </member>
+        <member name="T:ConnectFour.Domain.PlayerDomain.PlayerBase">
+            <inheritdoc cref="T:ConnectFour.Domain.PlayerDomain.Contracts.IPlayer"/>
+        </member>
+        <member name="M:ConnectFour.Domain.PlayerDomain.PlayerBase.#ctor(ConnectFour.Domain.PlayerDomain.Contracts.IPlayer)">
+            <summary>
+            Creates a player that is a copy of an other player.
+            </summary>
+            <remarks>
+            This is an EXTRA. Not needed to implement the minimal requirements.
+            To make the mini-max algorithm for an AI game play strategy work, this constructor should be implemented.
+            </remarks>
+        </member>
+    </members>
+</doc>
